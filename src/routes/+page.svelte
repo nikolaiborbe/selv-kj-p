@@ -94,7 +94,7 @@
 
 			{#if items_in_bascet_gtin.length > 0}
 				<button
-					class="w-40 h-12 rounded-lg bg-neutral-800 outline-1 outline-gray-600/50"
+					class="w-40 h-16 rounded-full bg-blue-700 outline-1 "
 					onclick={() => (checkout = true)}
 				>
 					Checkout
