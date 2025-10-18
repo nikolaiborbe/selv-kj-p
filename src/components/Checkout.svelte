@@ -68,7 +68,7 @@
 					bind:value={checkout_measured_weight}
 				/>
 				<button
-					class="bg-neutral-800 rounded-md w-20 h-10 cursor-pointer"
+					class="flex w-52 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center px-2"
 					onclick={() => try_to_pay()}
 				>
 					Pay

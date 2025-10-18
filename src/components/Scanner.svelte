@@ -91,7 +91,7 @@
 </script>
 
 <div class="flex flex-col items-center justify-content gap-3">
-	<video bind:this={videoEl} autoplay playsinline muted class="w-full bg-black aspect-video pt-20"
+	<video bind:this={videoEl} autoplay playsinline muted class="w-full bg-black aspect-video"
 	></video>
 	<div class="flex items-center gap-2">
 		<button
