@@ -94,13 +94,15 @@
 			</div>
 
 			{#if items_in_bascet_gtin.length > 0}
-				<button
-					class="flex w-52 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center"
-					onclick={() => (checkout = true)}
-				>
-					Checkout
-					<MoneyIcon />
-				</button>
+				<div class="w-full flex justify-center">
+					<button
+						class="flex w-52 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center px-2"
+						onclick={() => (checkout = true)}
+					>
+						Checkout
+						<MoneyIcon />
+					</button>
+				</div>
 			{/if}
 		{:else if checkout}
 			<Checkout {cart} />
