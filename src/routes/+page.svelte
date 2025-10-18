@@ -84,7 +84,7 @@
 					<div class="flex flex-col gap-2">
 						{#each cart as c}
 							<div
-								class="rounded-xl bg-gray-600/30 outline-1 outline-gray-600/50 h-18 flex flex-col justify-between items-center"
+								class="rounded-xl bg-gray-600/30 outline-1 outline-gray-600/50 h-18 flex flex-col justify-around items-start"
 							>
 								<p class="text-sm font-semibold pl-4">
 									{c.name}
@@ -99,11 +99,13 @@
 			{#if items_in_bascet_gtin.length > 0}
 				<div class="w-full flex justify-center pt-6">
 					<button
-						class="flex w-52 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center px-4"
+						class="flex w-72 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center px-4"
 						onclick={() => (checkout = true)}
 					>
-						Gå til kassen
-						<MoneyIcon />
+						<div>
+							<MoneyIcon />
+							Gå til kassen
+						</div>
 					</button>
 				</div>
 			{/if}

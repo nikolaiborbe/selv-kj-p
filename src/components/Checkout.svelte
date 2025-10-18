@@ -49,13 +49,13 @@
 	});
 </script>
 
-<div class="w-full h-screen flex justify-center items-center text-semibold">
+<div class="w-full h-screen flex justify-center items-center font-semibold">
 	<div class="">
 		{#if !weighing}
 			<div class="flex flex-col items-center gap-5 pb-4">
 				<p>Plaser handleposen på vekta.</p>
 				<button
-					class="bg-zinc-600 w-72 rounded-full h-12 cursor-pointer text-blue-400 font-semibold"
+					class="bg-zinc-600 w-72 rounded-full h-12 cursor-pointer text-teal-500 font-semibold"
 					onclick={() => (weighing = true)}
 				>
 					Gå videre
@@ -72,17 +72,19 @@
 					bind:value={checkout_measured_weight}
 				/>
 				<button
-					class="flex w-52 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center px-4"
+					class="flex w-72 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center px-4"
 					onclick={() => try_to_pay()}
 				>
-					Betal
-					<MoneyIcon />
+					<div>
+						<MoneyIcon />
+						Betal
+					</div>
+					{#if can_pay}
+						Betalt!
+					{:else if weigh_does_not_match}
+						Varene sammsvarer ikke med målt vekt. Tilkaller betjent. Vennligst vent.
+					{/if}
 				</button>
-				{#if can_pay}
-					Betalt!
-				{:else if weigh_does_not_match}
-					Varene sammsvarer ikke med målt vekt. Tilkaller betjent. Vennligst vent.
-				{/if}
 			</div>
 		{/if}
 	</div>

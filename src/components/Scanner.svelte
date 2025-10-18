@@ -102,7 +102,7 @@
 	<div class="flex items-center gap-2">
 		{#if !scanning}
 			<button
-				class="bg-zinc-600 w-72 rounded-full h-12 cursor-pointer text-blue-400 font-semibold"
+				class="bg-zinc-600 w-72 rounded-full h-12 cursor-pointer text-teal-500 font-semibold"
 				onclick={start}
 				disabled={scanning}
 			>
@@ -110,7 +110,7 @@
 			</button>
 		{:else if scanning}
 			<button
-				class="bg-zinc-600 w-72 rounded-full h-12 cursor-pointer text-blue-400 font-semibold"
+				class="bg-zinc-600 w-72 rounded-full h-12 cursor-pointer text-teal-500 font-semibold"
 				onclick={stop}
 				disabled={!scanning}
 			>
