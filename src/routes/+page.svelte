@@ -68,11 +68,13 @@
 
 			<div class="pt-10 rounded-md pb-4">
 				{#if products}
-					{#each display_products as name}
-						<p class="">
-							{name}
-						</p>
-					{/each}
+					<ul class="list-disc">
+						{#each display_products as name}
+							<li class="">
+								{name}
+							</li>
+						{/each}
+					</ul>
 				{/if}
 			</div>
 
