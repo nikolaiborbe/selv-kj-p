@@ -78,7 +78,7 @@
 				<Scanner bind:new_item bind:items_in_bascet_gtin on:scan={(e) => (code = e.detail)} />
 			</div>
 
-			<div class="pt-10 rounded-md pb-4 ml-2">
+			<div class="pt-10 rounded-md pb-4 mx-4">
 				{#if items_in_bascet_gtin.length > 0}
 					<p class="font-semibold">Cart</p>
 					<div class="bg-natural-800 rounded-xl">
@@ -96,7 +96,7 @@
 			{#if items_in_bascet_gtin.length > 0}
 				<div class="w-full flex justify-center pt-6">
 					<button
-						class="flex w-52 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center px-2"
+						class="flex w-52 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center px-4"
 						onclick={() => (checkout = true)}
 					>
 						Gå til kassen
