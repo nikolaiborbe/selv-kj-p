@@ -102,7 +102,7 @@
 						class="flex w-72 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center px-4"
 						onclick={() => (checkout = true)}
 					>
-						<div class="flex gap-1">
+						<div class="flex gap-1 items-center">
 							<MoneyIcon />
 							Gå til kassen
 						</div>

@@ -55,7 +55,7 @@
 			<div class="flex flex-col items-center gap-5 pb-4">
 				<p>Plaser handleposen på vekta.</p>
 				<button
-					class="bg-zinc-600 w-72 rounded-full h-12 cursor-pointer text-cyan-300 font-semibold"
+					class="bg-zinc-700 w-72 rounded-full h-12 cursor-pointer text-cyan-300 font-semibold"
 					onclick={() => (weighing = true)}
 				>
 					Gå videre
@@ -77,14 +77,12 @@
 				>
 					<div class="flex gap-2 items-center">
 						<MoneyIcon />
-						{can_pay ? '' : 'Betal'}
+						{can_pay ? 'Betalt!' : 'Betal'}
 					</div>
-					{#if can_pay}
-						Betalt!
-					{:else if weigh_does_not_match}
-						Varene sammsvarer ikke med målt vekt. Tilkaller betjent. Vennligst vent.
-					{/if}
 				</button>
+				{#if !can_pay}
+					Varene sammsvarer ikke med målt vekt. Tilkaller betjent. Vennligst vent.
+				{/if}
 			</div>
 		{/if}
 	</div>
