@@ -102,12 +102,23 @@
 	}
 
 	async function runZXing() {
-		const [{ BrowserMultiFormatReader }, { NotFoundException }] = await Promise.all([
+		const [{ BrowserMultiFormatReader }, lib] = await Promise.all([
 			import('@zxing/browser'),
 			import('@zxing/library')
 		]);
+		const { NotFoundException, DecodeHintType, BarcodeFormat } = lib;
 
-		const reader = new BrowserMultiFormatReader();
+		const hints = new Map();
+		hints.set(DecodeHintType.TRY_HARDER, true);
+		hints.set(DecodeHintType.POSSIBLE_FORMATS, [
+			BarcodeFormat.EAN_13,
+			BarcodeFormat.EAN_8,
+			BarcodeFormat.UPC_A,
+			BarcodeFormat.CODE_128,
+			BarcodeFormat.CODE_39
+		]);
+
+		const reader = new BrowserMultiFormatReader(hints);
 		zxingControls = await reader.decodeFromVideoDevice(undefined, videoEl, (result, error) => {
 			if (result) emit(result.getText());
 			else if (error && !(error instanceof NotFoundException)) err = String(error);
