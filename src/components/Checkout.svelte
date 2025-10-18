@@ -66,7 +66,7 @@
 		{#if !weighing}
 			<div class="flex flex-col items-center gap-5">
 				<p>Please place the bag on the weght</p>
-				<p>{total_weigh}</p>
+				<p>{total_weight}</p>
 				<button
 					class="bg-slate-500 rounded-md w-20 h-10 cursor-pointer"
 					onclick={() => (weighing = true)}
