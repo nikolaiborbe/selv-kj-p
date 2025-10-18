@@ -79,7 +79,7 @@
 			</div>
 
 			<div class="pt-10 rounded-md pb-4">
-				{#if items_in_bascet_gtin.length > 1}
+				{#if items_in_bascet_gtin.length > 0}
 					<p class="font-semibold">Cart</p>
 					<div class="bg-natural-800 rounded-xl">
 						<ul class="list-disc">
