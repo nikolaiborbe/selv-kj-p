@@ -22,11 +22,16 @@
 
 	function update_products_in_bascet_display() {
 		let temp = [];
-		for (const gtin of items_in_bascet_gtin.filter(Boolean)) {
-			// let name = products.find((p) => p.gtin === gtin)?.name;
-			// if (!name) {
-			let name = custom_products.find((p) => p.gtin === gtin)?.name;
-			if (name) temp.push(name);
+		for (let i = 0; i <= items_in_bascet_gtin.length; i++) {
+			let gtin = items_in_bascet_gtin[i];
+
+			let name = products.find((p) => p.gtin === gtin)?.name;
+
+			if (name == undefined) {
+				console.log("didn't find product, look in custom product list");
+				let name = custom_products.find((p) => p.gtin === gtin)?.name;
+				if (name) temp.push(name);
+			}
 		}
 		display_products = [...temp];
 	}
