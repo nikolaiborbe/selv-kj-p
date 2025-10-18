@@ -80,7 +80,7 @@
 						{can_pay ? 'Betalt!' : 'Betal'}
 					</div>
 				</button>
-				{#if !can_pay}
+				{#if can_pay}
 					Varene sammsvarer ikke med målt vekt. Tilkaller betjent. Vennligst vent.
 				{/if}
 			</div>

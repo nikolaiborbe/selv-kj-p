@@ -9,6 +9,7 @@
 	let scanning = $state(false);
 	let last = $state('');
 	let err = $state('');
+	const SCAN_MS = 150;
 
 	let raf = 0;
 	let zxingControls: any = null;
@@ -53,50 +54,40 @@
 			stop();
 		}
 	}
+	// replace your runNative with a throttled version (scan 0° then 90° only)
 	async function runNative() {
 		// @ts-ignore
 		const detector = new window.BarcodeDetector({
 			formats: ['ean_13', 'ean_8', 'upc_a', 'code_128', 'code_39']
 		});
-
 		const canvas = document.createElement('canvas');
 		const ctx = canvas.getContext('2d')!;
 
-		const tryDetect = async (source: CanvasImageSource) => {
-			const res = await detector.detect(source as any);
+		const tryDetect = async (src: CanvasImageSource) => {
+			const res = await detector.detect(src as any);
 			return res?.[0]?.rawValue as string | undefined;
 		};
 
 		const loop = async () => {
 			if (!scanning) return;
 			try {
-				// 0°
 				let code = await tryDetect(videoEl);
 				if (!code) {
-					// 90°, 180°, 270°
-					const angles = [90, 180, 270];
-					for (const deg of angles) {
-						if (deg % 180 === 0) {
-							canvas.width = videoEl.videoWidth;
-							canvas.height = videoEl.videoHeight;
-						} else {
-							canvas.width = videoEl.videoHeight;
-							canvas.height = videoEl.videoWidth;
-						}
-						ctx.save();
-						ctx.translate(canvas.width / 2, canvas.height / 2);
-						ctx.rotate((deg * Math.PI) / 180);
-						ctx.drawImage(videoEl, -videoEl.videoWidth / 2, -videoEl.videoHeight / 2);
-						ctx.restore();
-						code = await tryDetect(canvas);
-						if (code) break;
-					}
+					// try 90° only (less work than 180°/270°)
+					canvas.width = videoEl.videoHeight;
+					canvas.height = videoEl.videoWidth;
+					ctx.save();
+					ctx.translate(canvas.width / 2, canvas.height / 2);
+					ctx.rotate(Math.PI / 2);
+					ctx.drawImage(videoEl, -videoEl.videoWidth / 2, -videoEl.videoHeight / 2);
+					ctx.restore();
+					code = await tryDetect(canvas);
 				}
 				if (code) return emit(code);
 			} catch (e) {
 				err = String(e ?? '');
 			}
-			raf = requestAnimationFrame(loop);
+			setTimeout(loop, SCAN_MS); // throttle
 		};
 		loop();
 	}
@@ -109,7 +100,7 @@
 		const { NotFoundException, DecodeHintType, BarcodeFormat } = lib;
 
 		const hints = new Map();
-		hints.set(DecodeHintType.TRY_HARDER, true);
+		// hints.set(DecodeHintType.TRY_HARDER, true);
 		hints.set(DecodeHintType.POSSIBLE_FORMATS, [
 			BarcodeFormat.EAN_13,
 			BarcodeFormat.EAN_8,
