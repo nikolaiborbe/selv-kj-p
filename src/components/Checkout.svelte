@@ -75,7 +75,7 @@
 					class="flex w-72 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center px-4"
 					onclick={() => try_to_pay()}
 				>
-					<div>
+					<div class="flex gap-1">
 						<MoneyIcon />
 						Betal
 					</div>
