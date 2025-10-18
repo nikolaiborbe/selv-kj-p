@@ -71,17 +71,16 @@
 {#if main_page}
 	<MainPage bind:main_page />
 {:else}
-	<div class="w-screen h-screen bg-black p-4 text-sm text-white flex flex-col items-center">
+	<div class="w-screen h-screen bg-black p-4 text-sm text-white items-center">
 		{#if !checkout}
 			<div class="flex flex-col gap-2 items-center cursor-pointer">
 				<Scanner bind:new_item bind:items_in_bascet_gtin on:scan={(e) => (code = e.detail)} />
 			</div>
 
 			<div class="pt-10 rounded-md pb-4">
-				{#if products.length > 0}
-					<div
-						class="rounded-lg bg-gray-600/30 outline-1 outline-gray-600/50 h-18 flex justify-between items-center"
-					>
+				{#if items_in_bascet_gtin.length > 1}
+					<p class="font-semibold">Cart</p>
+					<div class="bg-natural-800 rounded-xl">
 						<ul class="list-disc">
 							{#each display_products as name}
 								<li class="">
@@ -95,7 +94,7 @@
 
 			{#if items_in_bascet_gtin.length > 0}
 				<button
-					class="w-40 h-12 rounded-lg bg-zinc-800 outline-1 outline-gray-600/50"
+					class="w-40 h-12 rounded-lg bg-neutral-800 outline-1 outline-gray-600/50"
 					onclick={() => (checkout = true)}
 				>
 					Checkout

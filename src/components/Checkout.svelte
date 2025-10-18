@@ -29,6 +29,7 @@
 		// TODO
 		if (Math.abs(checkout_measured_weight - total_weight) < 50 * cart.length) {
 			can_pay = true;
+			// setInterval(( ), 2500);
 		} else {
 			weigh_does_not_match = true;
 		}
@@ -51,7 +52,7 @@
 				<p>Please place the bag on the weght</p>
 				<p>{total_weight}</p>
 				<button
-					class="bg-slate-500 rounded-md w-20 h-10 cursor-pointer"
+					class="w-40 h-12 rounded-lg bg-zinc-800 outline-1 outline-gray-600/50"
 					onclick={() => (weighing = true)}
 				>
 					Done
@@ -67,7 +68,7 @@
 					bind:value={checkout_measured_weight}
 				/>
 				<button
-					class="bg-slate-500 rounded-md w-20 h-10 cursor-pointer"
+					class="bg-neutral-800 rounded-md w-20 h-10 cursor-pointer"
 					onclick={() => try_to_pay()}
 				>
 					Pay

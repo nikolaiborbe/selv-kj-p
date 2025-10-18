@@ -90,7 +90,7 @@
 	onDestroy(stop);
 </script>
 
-<div class="flex flex-col items-center gap-3">
+<div class="flex flex-col items-center justify-content gap-3">
 	<video
 		bind:this={videoEl}
 		autoplay
@@ -100,15 +100,15 @@
 	></video>
 	<div class="flex items-center gap-2">
 		<button
-			class="w-40 h-12 rounded-lg bg-zinc-800 outline outline-1 outline-gray-600/50"
-			on:click={start}
+			class="bg-neutral-800 rounded-md w-28 h-10 cursor-pointer"
+			onclick={start}
 			disabled={scanning}
 		>
 			{scanning ? 'Scanning…' : 'Start'}
 		</button>
 		<button
-			class="w-40 h-12 rounded-lg bg-zinc-800 outline outline-1 outline-gray-600/50"
-			on:click={stop}
+			class="bg-neutral-800 rounded-md w-28 h-10 cursor-pointer"
+			onclick={stop}
 			disabled={!scanning}
 		>
 			Stop
