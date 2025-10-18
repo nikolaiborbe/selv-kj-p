@@ -1,8 +1,9 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { Product } from '../routes/types.ts';
 
 	let total_weigh = $state(Infinity);
-	let { custom_products }: { custom_products: Product[] } = $props();
+	let { cart }: { cart: Product[] } = $props();
 
 	let weighing = $state(false);
 
@@ -14,8 +15,8 @@
 
 	function get_total_product_weight(): number {
 		let tot = 0;
-		for (let i = 0; i < custom_products.length; i++) {
-			let name = custom_products[i].name;
+		for (let i = 0; i < cart.length; i++) {
+			let name = cart[i].name;
 			let j = name.split(' ');
 			let unit = j[j.length - 1];
 			let weight = j[j.length - 2] as unknown as number;
@@ -25,6 +26,7 @@
 			} else if (unit === 'l') tot += weight * 1000;
 		}
 		console.log(tot);
+		total_weigh = tot;
 		return tot;
 	}
 
@@ -33,7 +35,7 @@
 		// TODO
 		if (
 			Math.abs(checkout_measured_weight - get_total_product_weight()) <
-			50 * custom_products.length
+			50 * (cart.length)
 		) {
 			can_pay = true;
 		} else {
@@ -43,6 +45,10 @@
 	function try_to_pay() {
 		handle_checkout_click();
 	}
+
+	onMount(() => {
+		total_weigh = 10;
+	})
 </script>
 
 <div class="w-full h-screen flex justify-center items-center">
@@ -50,6 +56,7 @@
 		{#if !weighing}
 			<div class="flex flex-col items-center gap-5">
 				<p>Please place the bag on the weght</p>
+				<p>{total_weigh}</p>
 				<button
 					class="bg-slate-500 rounded-md w-20 h-10 cursor-pointer"
 					onclick={() => (weighing = true)}

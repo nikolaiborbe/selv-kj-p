@@ -20,12 +20,19 @@
 	let checkout = $state(false);
 	let main_page = $state(true);
 	let new_item = $state(false);
+	let cart: Product[] = $state([]);
 
 	function update_products_in_bascet_display() {
 		const temp: string[] = [];
 		for (let i = 0; i < items_in_bascet_gtin.length; i++) {
 			const gtin = items_in_bascet_gtin[i];
 			if (!gtin) continue;
+
+			const item =
+				products.find((p) => p.gtin === gtin) ?? custom_products.find((p) => p.gtin === gtin);
+			if (item) {
+				cart.push(item);
+			}
 
 			const name =
 				products.find((p) => p.gtin === gtin)?.name ??
@@ -88,7 +95,10 @@
 				</button>
 			{/if}
 		{:else if checkout}
-			<Checkout {custom_products} />
+			{#each cart as c}
+				<p>{c}</p>
+			{/each}
+			<Checkout {cart} />
 		{/if}
 	</div>
 	<div class="fixed inset-x-0 bottom-0 bg-zinc-800 h-20 w-full flex justify-between px-8">
