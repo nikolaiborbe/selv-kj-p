@@ -57,12 +57,13 @@
 					class="w-40 h-12 rounded-lg bg-zinc-800 outline-1 outline-gray-600/50"
 					onclick={() => (weighing = true)}
 				>
-					Ferdig!
+					Ferdig
 				</button>
 			</div>
 		{:else}
 			<div class="flex flex-col items-center gap-5">
 				<p>Skriv inn målt vekt (i gram)</p>
+				<p>(bare for demo)</p>
 				<input
 					type="number"
 					name="Please insert the weight"
