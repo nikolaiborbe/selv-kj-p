@@ -1,0 +1,14 @@
+[
+  {
+    "productId": "10",
+    "gtin": "5060337502238",
+    "name": "Hvit Monster 0.5 l",
+    "description": "",
+    "price": 25.95,
+    "pricePerUnit": 34.44,
+    "unit": "500 ml",
+    "allergens": "",
+    "carbonFootprintGram": 300,
+    "organic": false
+  }
+]

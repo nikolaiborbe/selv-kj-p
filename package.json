@@ -42,6 +42,7 @@
 		"vitest-browser-svelte": "^1.1.0"
 	},
 	"dependencies": {
-		"@zxing/browser": "^0.1.5"
+		"@zxing/browser": "^0.1.5",
+		"@zxing/library": "^0.21.3"
 	}
 }
