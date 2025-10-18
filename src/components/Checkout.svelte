@@ -77,8 +77,7 @@
 				>
 					<div class="flex gap-2 items-center">
 						<MoneyIcon />
-						{can_pay ? 'Betal' : ''}
-						Betal
+						{can_pay ? '' : 'Betal'}
 					</div>
 					{#if can_pay}
 						Betalt!
