@@ -19,6 +19,7 @@
 	let total_weigh = $state(0);
 	let checkout = $state(false);
 	let main_page = $state(true);
+	let new_item = $state(false);
 
 	function update_products_in_bascet_display() {
 		const temp: string[] = [];
@@ -48,8 +49,11 @@
 			custom_products = await res.json();
 
 			setInterval(() => {
-				update_products_in_bascet_display();
-			}, 300);
+				if (new_item) {
+					update_products_in_bascet_display();
+					new_item = false;
+				}
+			}, 100);
 		})();
 	});
 </script>
@@ -60,7 +64,7 @@
 	<div class="w-screen h-screen bg-black p-4 text-sm text-white flex flex-col items-center">
 		{#if !checkout}
 			<div class="flex flex-col gap-2 items-center cursor-pointer">
-				<Scanner bind:items_in_bascet_gtin on:scan={(e) => (code = e.detail)} />
+				<Scanner bind:new_item bind:items_in_bascet_gtin on:scan={(e) => (code = e.detail)} />
 			</div>
 
 			<div class="pt-10 rounded-md pb-4">
@@ -88,7 +92,7 @@
 		{/if}
 	</div>
 	<div class="fixed inset-x-0 bottom-0 bg-zinc-800 h-20 w-full flex justify-between px-8">
-		<Home bind:main_page/>
+		<Home bind:main_page />
 		<Money bind:main_page />
 		<Paper />
 		<Person />

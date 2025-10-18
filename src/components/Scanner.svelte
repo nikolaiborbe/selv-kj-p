@@ -2,7 +2,7 @@
 	import { createEventDispatcher, onMount, onDestroy } from 'svelte';
 
 	const dispatch = createEventDispatcher<{ scan: string }>();
-	let { items_in_bascet_gtin = $bindable() } = $props();
+	let { new_item = $bindable(), items_in_bascet_gtin = $bindable() } = $props();
 
 	let videoEl!: HTMLVideoElement;
 	let scanning = $state(false);
@@ -46,6 +46,7 @@
 		if (code && code !== last) {
 			last = code;
 			items_in_bascet_gtin = [...items_in_bascet_gtin, code];
+      new_item = true;
 			dispatch('scan', code);
 			navigator.vibrate?.(40);
 			stop();

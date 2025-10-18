@@ -6,7 +6,7 @@
 
 	const dispatch = createEventDispatcher<{ scan: string }>();
 
-	let { items_in_bascet_gtin = $bindable(), ...props } = $props();
+	let { new_item = $bindable(), items_in_bascet_gtin = $bindable(), ...props } = $props();
 
 	let videoEl!: HTMLVideoElement;
 	let canvas: HTMLCanvasElement;
