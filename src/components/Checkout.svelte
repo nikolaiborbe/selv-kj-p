@@ -55,7 +55,7 @@
 			<div class="flex flex-col items-center gap-5 pb-4">
 				<p>Plaser handleposen på vekta.</p>
 				<button
-					class="bg-zinc-600 w-72 rounded-full h-12 cursor-pointer text-teal-500 font-semibold"
+					class="bg-zinc-600 w-72 rounded-full h-12 cursor-pointer text-cyan-300 font-semibold"
 					onclick={() => (weighing = true)}
 				>
 					Gå videre

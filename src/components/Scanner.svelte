@@ -92,17 +92,15 @@
 </script>
 
 <div class="flex flex-col items-center justify-content gap-5">
-	<div class="mt-14 w-fit">
+	<div class="mt-14">
 		{#if scanning}
-			<div class="outline-2 outline-red-500">
-				<video bind:this={videoEl} autoplay playsinline muted class=" aspect-video"></video>
-			</div>
+			<video bind:this={videoEl} autoplay playsinline muted class=" aspect-video"></video>
 		{/if}
 	</div>
 	<div class="flex items-center gap-2">
 		{#if !scanning}
 			<button
-				class="bg-zinc-600 w-72 rounded-full h-12 cursor-pointer text-teal-500 font-semibold"
+				class="bg-zinc-600 w-72 rounded-full h-12 cursor-pointer text-cyan-300 font-semibold"
 				onclick={start}
 				disabled={scanning}
 			>
@@ -110,7 +108,7 @@
 			</button>
 		{:else if scanning}
 			<button
-				class="bg-zinc-600 w-72 rounded-full h-12 cursor-pointer text-teal-500 font-semibold"
+				class="bg-zinc-600 w-72 rounded-full h-12 cursor-pointer text-cyan-300 font-semibold"
 				onclick={stop}
 				disabled={!scanning}
 			>
