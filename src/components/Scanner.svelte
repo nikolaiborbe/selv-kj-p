@@ -53,18 +53,45 @@
 			stop();
 		}
 	}
-
 	async function runNative() {
 		// @ts-ignore
 		const detector = new window.BarcodeDetector({
 			formats: ['ean_13', 'ean_8', 'upc_a', 'code_128', 'code_39']
 		});
 
+		const canvas = document.createElement('canvas');
+		const ctx = canvas.getContext('2d')!;
+
+		const tryDetect = async (source: CanvasImageSource) => {
+			const res = await detector.detect(source as any);
+			return res?.[0]?.rawValue as string | undefined;
+		};
+
 		const loop = async () => {
 			if (!scanning) return;
 			try {
-				const res = await detector.detect(videoEl);
-				const code = res?.[0]?.rawValue as string | undefined;
+				// 0°
+				let code = await tryDetect(videoEl);
+				if (!code) {
+					// 90°, 180°, 270°
+					const angles = [90, 180, 270];
+					for (const deg of angles) {
+						if (deg % 180 === 0) {
+							canvas.width = videoEl.videoWidth;
+							canvas.height = videoEl.videoHeight;
+						} else {
+							canvas.width = videoEl.videoHeight;
+							canvas.height = videoEl.videoWidth;
+						}
+						ctx.save();
+						ctx.translate(canvas.width / 2, canvas.height / 2);
+						ctx.rotate((deg * Math.PI) / 180);
+						ctx.drawImage(videoEl, -videoEl.videoWidth / 2, -videoEl.videoHeight / 2);
+						ctx.restore();
+						code = await tryDetect(canvas);
+						if (code) break;
+					}
+				}
 				if (code) return emit(code);
 			} catch (e) {
 				err = String(e ?? '');
@@ -94,7 +121,7 @@
 <div class="flex flex-col items-center justify-content gap-5">
 	<div class="mt-14">
 		{#if scanning}
-				<video bind:this={videoEl} autoplay playsinline muted class=" aspect-video"></video>
+			<video bind:this={videoEl} autoplay playsinline muted class=" aspect-video"></video>
 		{/if}
 	</div>
 	<div class="flex items-center gap-2">
