@@ -21,19 +21,18 @@
 	let main_page = $state(true);
 
 	function update_products_in_bascet_display() {
-		let temp = [];
-		for (let i = 0; i <= items_in_bascet_gtin.length; i++) {
-			let gtin = items_in_bascet_gtin[i];
+		const temp: string[] = [];
+		for (let i = 0; i < items_in_bascet_gtin.length; i++) {
+			const gtin = items_in_bascet_gtin[i];
+			if (!gtin) continue;
 
-			let name = products.find((p) => p.gtin === gtin)?.name;
+			const name =
+				products.find((p) => p.gtin === gtin)?.name ??
+				custom_products.find((p) => p.gtin === gtin)?.name;
 
-			if (name == undefined) {
-				console.log("didn't find product, look in custom product list");
-				let name = custom_products.find((p) => p.gtin === gtin)?.name;
-				if (name) temp.push(name);
-			}
+			if (name) temp.push(name);
 		}
-		display_products = [...temp];
+		display_products = temp;
 	}
 
 	async function get_products() {
