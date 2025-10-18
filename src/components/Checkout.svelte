@@ -68,11 +68,11 @@
 				<input
 					type="number"
 					name="Please insert the weight"
-					class="border w-40 h-14 bg-zinc-500 rounded-xl pl-2"
+					class="border w-40 h-12 bg-zinc-500 rounded-xl pl-2"
 					bind:value={checkout_measured_weight}
 				/>
 				<button
-					class="flex w-72 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center px-4"
+					class="flex w-72 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center px-4 mt-10"
 					onclick={() => try_to_pay()}
 				>
 					<div class="flex gap-2 items-center ">
