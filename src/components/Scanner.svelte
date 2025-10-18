@@ -243,6 +243,6 @@
 		>
 	</div>
 
-	{#if last}<p>Scanned: <strong>{last}</strong></p>{/if}
+	<!-- {#if last}<p>Scanned: <strong>{last}</strong></p>{/if} -->
 	{#if err}<p class="text-red-600">{err}</p>{/if}
 </div>

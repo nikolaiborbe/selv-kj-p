@@ -21,14 +21,13 @@
 	let main_page = $state(true);
 
 	function update_products_in_bascet_display() {
-		let temp: string[] = []; // reset
+		display_products = [];
 		for (const gtin of items_in_bascet_gtin.filter(Boolean)) {
 			// let name = products.find((p) => p.gtin === gtin)?.name;
 			// if (!name) {
 			let name = custom_products.find((p) => p.gtin === gtin)?.name;
-			if (name) temp.push(name);
+			if (name) display_products.push(name);
 		}
-		display_products = [...temp, ...display_products];
 	}
 
 	async function get_products() {
