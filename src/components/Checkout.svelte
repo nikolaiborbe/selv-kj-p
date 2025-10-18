@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { Product } from '../routes/types.ts';
 	import { refreshAll } from '$app/navigation';
+	import MoneyIcon from '../icons/MoneyIcon.svelte';
 
 	let total_weight = $state(0);
 	let { cart }: { cart: Product[] } = $props();
@@ -48,16 +49,16 @@
 	});
 </script>
 
-<div class="w-full h-screen flex justify-center items-center">
+<div class="w-full h-screen flex justify-center items-center text-semibold">
 	<div class="">
 		{#if !weighing}
-			<div class="flex flex-col items-center gap-5">
+			<div class="flex flex-col items-center gap-5 pb-4">
 				<p>Plaser handleposen på vekta.</p>
 				<button
-					class="w-40 h-12 rounded-lg bg-zinc-800 outline-1 outline-gray-600/50"
+					class="bg-zinc-600 w-72 rounded-full h-12 cursor-pointer text-blue-400 font-semibold"
 					onclick={() => (weighing = true)}
 				>
-					Ferdig
+					Gå videre
 				</button>
 			</div>
 		{:else}
@@ -71,10 +72,11 @@
 					bind:value={checkout_measured_weight}
 				/>
 				<button
-					class="flex w-52 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center px-2"
+					class="flex w-52 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center px-4"
 					onclick={() => try_to_pay()}
 				>
 					Betal
+					<MoneyIcon />
 				</button>
 				{#if can_pay}
 					Betalt!
