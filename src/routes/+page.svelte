@@ -78,13 +78,13 @@
 				<Scanner bind:new_item bind:items_in_bascet_gtin on:scan={(e) => (code = e.detail)} />
 			</div>
 
-			<div class="pt-10 rounded-md pb-4 mx-4">
+			<div class="pt-10 rounded-md pb-4 mx-2">
 				{#if items_in_bascet_gtin.length > 0}
-					<p class="font-semibold">Cart</p>
+					<p class="font-semibold pb-2">Cart</p>
 					<div class="flex flex-col gap-2">
 						{#each cart as c}
 							<div
-								class="rounded-xl bg-gray-600/30 outline-1 outline-gray-600/50 h-18 flex justify-between items-center"
+								class="rounded-xl bg-gray-600/30 outline-1 outline-gray-600/50 h-18 flex flex-col justify-between items-center"
 							>
 								<p class="text-sm font-semibold pl-4">
 									{c.name}
