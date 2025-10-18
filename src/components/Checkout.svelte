@@ -13,23 +13,6 @@
 	let weigh_does_not_match = $state(false);
 	let checkout_measured_weight = $state(Infinity);
 
-	function get_total_product_weight(): number {
-		let tot = 0;
-		for (let i = 0; i < cart.length; i++) {
-			let name = cart[i].name;
-			let j = name.split(' ');
-			let unit = j[j.length - 1];
-			let weight = j[j.length - 2] as unknown as number;
-
-			if (unit === 'g') {
-				tot += weight;
-			} else if (unit === 'l') tot += weight * 1000;
-		}
-		console.log(tot);
-		total_weight = tot;
-		return tot;
-	}
-
 	function get_item_weight(name: string): number {
 		let j = name.split(' ');
 		let unit = j[j.length - 1];
@@ -44,7 +27,7 @@
 	function handle_checkout_click() {
 		weighing = true;
 		// TODO
-		if (Math.abs(checkout_measured_weight - get_total_product_weight()) < 50 * cart.length) {
+		if (Math.abs(checkout_measured_weight - total_weight) < 50 * cart.length) {
 			can_pay = true;
 		} else {
 			weigh_does_not_match = true;
