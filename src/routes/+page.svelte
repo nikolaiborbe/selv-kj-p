@@ -24,6 +24,8 @@
 
 	function update_products_in_bascet_display() {
 		const temp: string[] = [];
+		const temp_cart: Product[] = [];
+		
 		for (let i = 0; i < items_in_bascet_gtin.length; i++) {
 			const gtin = items_in_bascet_gtin[i];
 			if (!gtin) continue;
@@ -31,7 +33,7 @@
 			const item =
 				products.find((p) => p.gtin === gtin) ?? custom_products.find((p) => p.gtin === gtin);
 			if (item) {
-				cart.push(item);
+				temp_cart.push(item);
 			}
 
 			const name =
@@ -41,6 +43,7 @@
 			if (name) temp.push(name);
 		}
 		display_products = temp;
+		cart = temp_cart;
 	}
 
 	async function get_products() {
