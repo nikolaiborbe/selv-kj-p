@@ -46,9 +46,6 @@
 			await get_products();
 			const res = await fetch('/custom_products.json');
 			custom_products = await res.json();
-			items_in_bascet_gtin.push('5060337502238');
-			items_in_bascet_gtin.push('5060337502238');
-			items_in_bascet_gtin.push('5060337502238');
 
 			setInterval(() => {
 				update_products_in_bascet_display();
