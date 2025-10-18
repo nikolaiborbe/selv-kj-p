@@ -28,7 +28,7 @@
 			let name = custom_products.find((p) => p.gtin === gtin)?.name;
 			if (name) temp.push(name);
 		}
-		display_products = [...display_products, ...temp]
+		display_products = [...temp];
 	}
 
 	async function get_products() {
@@ -42,10 +42,13 @@
 			await get_products();
 			const res = await fetch('/custom_products.json');
 			custom_products = await res.json();
+			items_in_bascet_gtin.push('5060337502238');
+			items_in_bascet_gtin.push('5060337502238');
+			items_in_bascet_gtin.push('5060337502238');
 
 			setInterval(() => {
 				update_products_in_bascet_display();
-			}, 500);
+			}, 300);
 		})();
 	});
 </script>
@@ -59,16 +62,14 @@
 				<Scanner bind:items_in_bascet_gtin on:scan={(e) => (code = e.detail)} />
 			</div>
 
-			<div class="pt-10 rounded-md">
-				<ul>
-					{#if products}
-						{#each display_products as name}
-							<li class="">
-								{name}
-							</li>
-						{/each}
-					{/if}
-				</ul>
+			<div class="pt-10 rounded-md pb-4">
+				{#if products}
+					{#each display_products as name}
+						<p class="">
+							{name}
+						</p>
+					{/each}
+				{/if}
 			</div>
 
 			{#if items_in_bascet_gtin.length > 0}
