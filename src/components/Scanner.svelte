@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher, onMount, onDestroy } from 'svelte';
+	import Image from '../icons/Image.svelte';
 
 	const dispatch = createEventDispatcher<{ scan: string }>();
 	let { new_item = $bindable(), items_in_bascet_gtin = $bindable() } = $props();
@@ -18,7 +19,7 @@
 		scanning = true;
 
 		const stream = await navigator.mediaDevices.getUserMedia({
-			video: { facingMode: 'environment'},
+			video: { facingMode: 'environment' },
 			audio: false
 		});
 		videoEl.srcObject = stream;
@@ -90,24 +91,37 @@
 	onDestroy(stop);
 </script>
 
-<div class="flex flex-col items-center justify-content gap-3">
-	<video bind:this={videoEl} autoplay playsinline muted class="w-full bg-black aspect-video scale-150"
-	></video>
+<div class="flex flex-col items-center justify-content gap-5">
+	<div class="mt-14 w-full">
+		{#if scanning}
+			<div class="outline-2 outline-red-500">
+				<video bind:this={videoEl} autoplay playsinline muted class=" aspect-video"></video>
+			</div>
+		{:else}
+			<div class="w-74 h-52 bg-neutral-800 flex flex-col gap-2 justify-center items-center">
+				<p class="text-neutral-300 font-semibold">Skru på kamera for å skanne!</p>
+				<Image />
+			</div>
+		{/if}
+	</div>
 	<div class="flex items-center gap-2">
-		<button
-			class="bg-neutral-800 rounded-md w-28 h-10 cursor-pointer"
-			onclick={start}
-			disabled={scanning}
-		>
-			{scanning ? 'Skanner...' : 'Skann Vare'}
-		</button>
-		<button
-			class="bg-neutral-800 rounded-md w-28 h-10 cursor-pointer"
-			onclick={stop}
-			disabled={!scanning}
-		>
-			Stopp
-		</button>
+		{#if !scanning}
+			<button
+				class="bg-neutral-800 rounded-md w-28 h-10 cursor-pointer"
+				onclick={start}
+				disabled={scanning}
+			>
+				Skann vare
+			</button>
+		{:else if scanning}
+			<button
+				class="bg-neutral-800 rounded-md w-28 h-10 cursor-pointer"
+				onclick={stop}
+				disabled={!scanning}
+			>
+				Stopp skanning
+			</button>
+		{/if}
 	</div>
 	{#if err}<p class="text-red-600 text-sm">{err}</p>{/if}
 </div>
