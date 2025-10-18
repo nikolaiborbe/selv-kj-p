@@ -25,7 +25,7 @@
 	function update_products_in_bascet_display() {
 		const temp: string[] = [];
 		const temp_cart: Product[] = [];
-		
+
 		for (let i = 0; i < items_in_bascet_gtin.length; i++) {
 			const gtin = items_in_bascet_gtin[i];
 			if (!gtin) continue;
@@ -78,14 +78,18 @@
 			</div>
 
 			<div class="pt-10 rounded-md pb-4">
-				{#if products}
-					<ul class="list-disc">
-						{#each display_products as name}
-							<li class="">
-								{name}
-							</li>
-						{/each}
-					</ul>
+				{#if products.length > 0}
+					<div
+						class="rounded-lg bg-gray-600/30 outline-1 outline-gray-600/50 h-18 flex justify-between items-center"
+					>
+						<ul class="list-disc">
+							{#each display_products as name}
+								<li class="">
+									{name}
+								</li>
+							{/each}
+						</ul>
+					</div>
 				{/if}
 			</div>
 
@@ -98,9 +102,6 @@
 				</button>
 			{/if}
 		{:else if checkout}
-			{#each cart as c}
-				<p>{c}</p>
-			{/each}
 			<Checkout {cart} />
 		{/if}
 	</div>

@@ -46,7 +46,7 @@
 		if (code && code !== last) {
 			last = code;
 			items_in_bascet_gtin = [...items_in_bascet_gtin, code];
-      new_item = true;
+			new_item = true;
 			dispatch('scan', code);
 			navigator.vibrate?.(40);
 			stop();
@@ -91,12 +91,26 @@
 </script>
 
 <div class="flex flex-col items-center gap-3">
-	<video bind:this={videoEl} autoplay playsinline muted class="w-full rounded-lg bg-black aspect-video"></video>
+	<video
+		bind:this={videoEl}
+		autoplay
+		playsinline
+		muted
+		class="w-full bg-black aspect-video rounded-lg"
+	></video>
 	<div class="flex items-center gap-2">
-		<button class="w-40 h-12 rounded-lg bg-zinc-800 outline outline-1 outline-gray-600/50" on:click={start} disabled={scanning}>
+		<button
+			class="w-40 h-12 rounded-lg bg-zinc-800 outline outline-1 outline-gray-600/50"
+			on:click={start}
+			disabled={scanning}
+		>
 			{scanning ? 'Scanning…' : 'Start'}
 		</button>
-		<button class="w-40 h-12 rounded-lg bg-zinc-800 outline outline-1 outline-gray-600/50" on:click={stop} disabled={!scanning}>
+		<button
+			class="w-40 h-12 rounded-lg bg-zinc-800 outline outline-1 outline-gray-600/50"
+			on:click={stop}
+			disabled={!scanning}
+		>
 			Stop
 		</button>
 	</div>
