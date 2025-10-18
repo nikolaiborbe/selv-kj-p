@@ -21,13 +21,14 @@
 	let main_page = $state(true);
 
 	function update_products_in_bascet_display() {
-		display_products = []; // reset
+		let temp: string[] = []; // reset
 		for (const gtin of items_in_bascet_gtin.filter(Boolean)) {
 			// let name = products.find((p) => p.gtin === gtin)?.name;
 			// if (!name) {
 			let name = custom_products.find((p) => p.gtin === gtin)?.name;
-			if (name) display_products.push(name);
+			if (name) temp.push(name);
 		}
+		display_products = [...temp, ...display_products];
 	}
 
 	async function get_products() {
@@ -68,13 +69,13 @@
 				{/if}
 			</div>
 
-			{#if items_in_bascet_gtin.length > 1}
-			<button
-				class="w-40 h-12 rounded-lg bg-zinc-800 outline-1 outline-gray-600/50"
-				onclick={() => (checkout = true)}
-			>
-				Checkout
-			</button>
+			{#if items_in_bascet_gtin.length > 0}
+				<button
+					class="w-40 h-12 rounded-lg bg-zinc-800 outline-1 outline-gray-600/50"
+					onclick={() => (checkout = true)}
+				>
+					Checkout
+				</button>
 			{/if}
 		{:else if checkout}
 			<Checkout {custom_products} />

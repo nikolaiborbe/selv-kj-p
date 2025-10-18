@@ -220,7 +220,7 @@
 	onDestroy(stop);
 </script>
 
-<div class="flex flex-col gap-3">
+<div class="flex flex-col gap-3 flex flex-col items-center">
 	<video
 		bind:this={videoEl}
 		autoplay
