@@ -5,6 +5,7 @@
 	import Arrow from '../icons/Arrow.svelte';
 	import Home from '../icons/Home.svelte';
 	import Money from '../icons/Money.svelte';
+	import MoneyIcon from '../icons/MoneyIcon.svelte';
 	import Paper from '../icons/Paper.svelte';
 	import Person from '../icons/Person.svelte';
 	import Scanner from '../components/Scanner.svelte';
@@ -94,11 +95,11 @@
 
 			{#if items_in_bascet_gtin.length > 0}
 				<button
-					class="flex justify-center w-52 h-14 rounded-full bg-blue-700"
+					class="flex w-52 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center"
 					onclick={() => (checkout = true)}
 				>
 					Checkout
-					<Money />
+					<MoneyIcon />
 				</button>
 			{/if}
 		{:else if checkout}
