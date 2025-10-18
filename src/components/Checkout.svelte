@@ -49,18 +49,18 @@
 	<div class="">
 		{#if !weighing}
 			<div class="flex flex-col items-center gap-5">
-				<p>Please place the bag on the weght</p>
+				<p>Plaser handleposen på vekta.</p>
 				<p>{total_weight}</p>
 				<button
 					class="w-40 h-12 rounded-lg bg-zinc-800 outline-1 outline-gray-600/50"
 					onclick={() => (weighing = true)}
 				>
-					Done
+					Ferdig!
 				</button>
 			</div>
 		{:else}
 			<div class="flex flex-col items-center gap-5">
-				<p>Please insert current weight (in grams)</p>
+				<p>Skriv inn målt vekt (i gram)</p>
 				<input
 					type="number"
 					name="Please insert the weight"
@@ -71,12 +71,12 @@
 					class="flex w-52 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center px-2"
 					onclick={() => try_to_pay()}
 				>
-					Pay
+					Betal
 				</button>
 				{#if can_pay}
-					Success
+					Betalt!
 				{:else if weigh_does_not_match}
-					The scanned items does not match the weight.
+					Varene sammsvarer ikke med målt vekt. Tilkaller betjent. Vennligst vent.
 				{/if}
 			</div>
 		{/if}

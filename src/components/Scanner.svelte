@@ -99,14 +99,14 @@
 			onclick={start}
 			disabled={scanning}
 		>
-			{scanning ? 'Scanning…' : 'Start'}
+			{scanning ? 'Skanner...' : 'Skann Vare'}
 		</button>
 		<button
 			class="bg-neutral-800 rounded-md w-28 h-10 cursor-pointer"
 			onclick={stop}
 			disabled={!scanning}
 		>
-			Stop
+			Stopp
 		</button>
 	</div>
 	{#if err}<p class="text-red-600 text-sm">{err}</p>{/if}
