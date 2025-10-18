@@ -66,6 +66,9 @@
 					class="h-10 rounded-md border w-full"
 					bind:value={checkout_measured_weight}
 				/>
+				{#each cart as c}
+				{c}
+				{/each}
 				<button
 					class="bg-slate-500 rounded-md w-20 h-10 cursor-pointer"
 					onclick={() => try_to_pay()}
