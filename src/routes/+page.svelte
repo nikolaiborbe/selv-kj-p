@@ -99,7 +99,7 @@
 						class="flex w-52 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center px-2"
 						onclick={() => (checkout = true)}
 					>
-						Checkout
+						Gå til kassen
 						<MoneyIcon />
 					</button>
 				</div>

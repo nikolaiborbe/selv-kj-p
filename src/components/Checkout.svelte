@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { Product } from '../routes/types.ts';
+	import { refreshAll } from '$app/navigation';
 
 	let total_weight = $state(0);
 	let { cart }: { cart: Product[] } = $props();
@@ -29,7 +30,9 @@
 		// TODO
 		if (Math.abs(checkout_measured_weight - total_weight) < 50 * cart.length) {
 			can_pay = true;
-			// setInterval(( ), 2500);
+			setTimeout(() => {
+				if (typeof window !== 'undefined') location.reload();
+			}, 1000);
 		} else {
 			weigh_does_not_match = true;
 		}
@@ -50,7 +53,6 @@
 		{#if !weighing}
 			<div class="flex flex-col items-center gap-5">
 				<p>Plaser handleposen på vekta.</p>
-				<p>{total_weight}</p>
 				<button
 					class="w-40 h-12 rounded-lg bg-zinc-800 outline-1 outline-gray-600/50"
 					onclick={() => (weighing = true)}
