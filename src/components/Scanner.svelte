@@ -143,7 +143,7 @@
 			if (result) {
 				const text = result.getText();
 				last = text;
-				items_in_bascet_gtin = [text, ...items_in_bascet_gtin];
+				items_in_bascet_gtin = [...items_in_bascet_gtin, text];
 				dispatch('scan', text);
 				navigator.vibrate?.(40);
 				stop();
