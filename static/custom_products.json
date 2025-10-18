@@ -34,5 +34,17 @@
     "allergens": "",
     "carbonFootprintGram": 300,
     "organic": false
+  },
+  {
+    "productId": "12",
+    "gtin": "5000112636901",
+    "name": "Coca Cola Zero Sugar 0.5 l",
+    "description": "",
+    "price": 28.95,
+    "pricePerUnit": 34.44,
+    "unit": "500 ml",
+    "allergens": "",
+    "carbonFootprintGram": 300,
+    "organic": false
   }
 ]
