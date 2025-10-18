@@ -28,7 +28,7 @@
 			let name = custom_products.find((p) => p.gtin === gtin)?.name;
 			if (name) temp.push(name);
 		}
-		display_products = [...temp]
+		display_products = [...display_products, ...temp]
 	}
 
 	async function get_products() {
