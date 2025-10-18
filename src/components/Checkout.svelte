@@ -64,11 +64,11 @@
 		{:else}
 			<div class="flex flex-col items-center gap-5">
 				<p>Skriv inn målt vekt (i gram)</p>
-				<p>(bare for demo)</p>
+				<p class="font-normal">(bare for demo)</p>
 				<input
 					type="number"
 					name="Please insert the weight"
-					class="h-10 rounded-md border w-full"
+					class="border w-40 h-14  rounded-xl pl-2"
 					bind:value={checkout_measured_weight}
 				/>
 				<button
