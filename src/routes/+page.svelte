@@ -88,7 +88,7 @@
 		{/if}
 	</div>
 	<div class="fixed inset-x-0 bottom-0 bg-zinc-800 h-20 w-full flex justify-between px-8">
-		<Home />
+		<Home bind:main_page/>
 		<Money bind:main_page />
 		<Paper />
 		<Person />
