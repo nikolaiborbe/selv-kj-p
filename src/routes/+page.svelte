@@ -60,13 +60,15 @@
 			</div>
 
 			<div class="pt-10 rounded-md">
-				{#if products}
-					{#each display_products as name}
-						<p class="">
-							{name}
-						</p>
-					{/each}
-				{/if}
+				<ul>
+					{#if products}
+						{#each display_products as name}
+							<li class="">
+								{name}
+							</li>
+						{/each}
+					{/if}
+				</ul>
 			</div>
 
 			{#if items_in_bascet_gtin.length > 0}
