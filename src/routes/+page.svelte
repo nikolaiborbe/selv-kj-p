@@ -7,7 +7,7 @@
 	import Money from '../icons/Money.svelte';
 	import Paper from '../icons/Paper.svelte';
 	import Person from '../icons/Person.svelte';
-	import Scanner from '../components/Scanner2.svelte';
+	import Scanner from '../components/Scanner.svelte';
 	import Checkout from '../components/Checkout.svelte';
 	import MainPage from '../components/MainPage.svelte';
 	let code = $state('');
