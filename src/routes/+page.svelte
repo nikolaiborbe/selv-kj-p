@@ -84,7 +84,7 @@
 					<div class="flex flex-col gap-2">
 						{#each cart as c}
 							<div
-								class="rounded-xl bg-gray-600/30 outline-1 outline-gray-600/50 h-18 flex flex-col justify-around items-start pl-4"
+								class="rounded-xl bg-gray-600/30 outline-1 outline-gray-600/50 h-18 flex flex-col justify-center gap-1 items-start pl-4"
 							>
 								<p class="text-sm font-semibold">
 									{c.name}
