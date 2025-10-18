@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { Product } from '../routes/types.ts';
 
-	let total_weigh = $state(Infinity);
+	let total_weight = $state(0);
 	let { cart }: { cart: Product[] } = $props();
 
 	let weighing = $state(false);
@@ -26,17 +26,25 @@
 			} else if (unit === 'l') tot += weight * 1000;
 		}
 		console.log(tot);
-		total_weigh = tot;
+		total_weight = tot;
 		return tot;
+	}
+
+	function get_item_weight(name: string): number {
+		let j = name.split(' ');
+		let unit = j[j.length - 1];
+		let weight = j[j.length - 2] as unknown as number;
+
+		if (unit === 'g') {
+			return weight;
+		} else if (unit === 'l') return weight * 1000;
+		else return 0;
 	}
 
 	function handle_checkout_click() {
 		weighing = true;
 		// TODO
-		if (
-			Math.abs(checkout_measured_weight - get_total_product_weight()) <
-			50 * (cart.length)
-		) {
+		if (Math.abs(checkout_measured_weight - get_total_product_weight()) < 50 * cart.length) {
 			can_pay = true;
 		} else {
 			weigh_does_not_match = true;
@@ -47,8 +55,10 @@
 	}
 
 	onMount(() => {
-		total_weigh = 10;
-	})
+		for (let i = 0; i < cart.length; i++) {
+			total_weight += get_item_weight(cart[i].name);
+		}
+	});
 </script>
 
 <div class="w-full h-screen flex justify-center items-center">
