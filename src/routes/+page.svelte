@@ -81,12 +81,12 @@
 			<div class="pt-10 rounded-md pb-4 mx-4">
 				{#if items_in_bascet_gtin.length > 0}
 					<p class="font-semibold">Cart</p>
-					<div class="flex flex-col gap-1">
+					<div class="flex flex-col gap-2">
 						{#each cart as c}
 							<div
-								class="rounded-lg bg-gray-600/30 outline-1 outline-gray-600/50 h-18 flex justify-between items-center"
+								class="rounded-xl bg-gray-600/30 outline-1 outline-gray-600/50 h-18 flex justify-between items-center"
 							>
-								<p class="text-sm font-semibold">
+								<p class="text-sm font-semibold pl-4">
 									{c.name}
 								</p>
 								<p class="text-xs">{c.description}</p>

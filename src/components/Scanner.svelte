@@ -92,22 +92,17 @@
 </script>
 
 <div class="flex flex-col items-center justify-content gap-5">
-	<div class="mt-14 w-full">
+	<div class="mt-14 w-fit">
 		{#if scanning}
 			<div class="outline-2 outline-red-500">
 				<video bind:this={videoEl} autoplay playsinline muted class=" aspect-video"></video>
-			</div>
-		{:else}
-			<div class="w-74 h-52 bg-neutral-800 flex flex-col gap-2 justify-center items-center">
-				<p class="text-neutral-300 font-semibold">Skru på kamera for å skanne!</p>
-				<Image />
 			</div>
 		{/if}
 	</div>
 	<div class="flex items-center gap-2">
 		{#if !scanning}
 			<button
-				class="bg-neutral-800 rounded-md w-28 h-10 cursor-pointer"
+				class="bg-blue-700 w-full rounded-full h-10 cursor-pointer "
 				onclick={start}
 				disabled={scanning}
 			>
@@ -115,7 +110,7 @@
 			</button>
 		{:else if scanning}
 			<button
-				class="bg-neutral-800 rounded-md w-28 h-10 cursor-pointer"
+				class="bg-zinc-800 w-full rounded-full h-10 cursor-pointer text-blue-400"
 				onclick={stop}
 				disabled={!scanning}
 			>
