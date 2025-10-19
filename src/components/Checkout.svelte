@@ -4,7 +4,7 @@
 	import { refreshAll } from '$app/navigation';
 	import MoneyIcon from '../icons/MoneyIcon.svelte';
 
-	let total_weight = $state(0);
+	let total_weight: number = $state(0);
 	let { cart }: { cart: Product[] } = $props();
 
 	let weighing = $state(false);
@@ -46,7 +46,7 @@
 
 	onMount(() => {
 		for (let i = 0; i < cart.length; i++) {
-			total_weight += get_item_weight(cart[i].name) as number;
+			total_weight += Number(get_item_weight(cart[i].name));
 		}
 	});
 </script>
