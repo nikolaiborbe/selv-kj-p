@@ -27,6 +27,21 @@
 		else return 0;
 	}
 
+	function handle_checkout_click_95_conf() {
+		weighing = true;
+		let n = Number(cart.length);
+		let lower_bound = checkout_measured_weight - 1.96 * Math.sqrt(50 / n);
+		let upper_bound = checkout_measured_weight + 1.96 * Math.sqrt(50 / n);
+		if (total_weight < upper_bound && total_weight > lower_bound) {
+			can_pay = true;
+			setTimeout(() => {
+				if (typeof window !== 'undefined') location.reload();
+			}, 1500);
+		} else {
+			weigh_does_not_match = true;
+		}
+	}
+
 	function handle_checkout_click() {
 		weighing = true;
 		// TODO
@@ -41,7 +56,7 @@
 	}
 	function try_to_pay() {
 		tried_to_pay = true;
-		handle_checkout_click();
+		handle_checkout_click_95_conf();
 	}
 
 	onMount(() => {
@@ -84,9 +99,7 @@
 						</div>
 					</button>
 				{:else if can_pay && tried_to_pay}
-				<div class="font-semibold">
-					Betalt!
-				</div>
+					<div class="font-semibold">Betalt!</div>
 				{/if}
 				{#if !can_pay && tried_to_pay}
 					<p class="font-semibold">
