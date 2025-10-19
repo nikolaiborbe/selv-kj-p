@@ -57,7 +57,7 @@
 	function handle_checkout_click() {
 		weighing = true;
 		// TODO
-		if (Math.abs(checkout_measured_weight - total_weight) < 50 * cart.length) {
+		if (Math.abs(checkout_measured_weight - total_weight) < 75 * cart.length) {
 			can_pay = true;
 			setTimeout(() => {
 				if (typeof window !== 'undefined') location.reload();
@@ -68,7 +68,7 @@
 	}
 	function try_to_pay() {
 		tried_to_pay = true;
-		handle_checkout_click_95_conf();
+		handle_checkout_click();
 	}
 
 	onMount(() => {
