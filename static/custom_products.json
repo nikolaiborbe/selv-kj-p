@@ -46,5 +46,65 @@
     "allergens": "",
     "carbonFootprintGram": 300,
     "organic": false
+  },
+  {
+    "productId": "14",
+    "gtin": "5000112636833",
+    "name": "Coca Cola 0.5 l",
+    "description": "Med sukker.",
+    "price": 28.95,
+    "pricePerUnit": 34.44,
+    "unit": "500 ml",
+    "allergens": "",
+    "carbonFootprintGram": 300,
+    "organic": false
+  },
+  {
+    "productId": "15",
+    "gtin": "7021010001057",
+    "name": "Nugatti 500 g",
+    "description": "Med sukker.",
+    "price": 28.95,
+    "pricePerUnit": 34.44,
+    "unit": "500 ml",
+    "allergens": "",
+    "carbonFootprintGram": 300,
+    "organic": false
+  },
+  {
+    "productId": "16",
+    "gtin": "7039010149020",
+    "name": "Stabbur-Makrell 170 g",
+    "description": "Filet i tomatsaus.",
+    "price": 28.95,
+    "pricePerUnit": 34.44,
+    "unit": "500 ml",
+    "allergens": "",
+    "carbonFootprintGram": 300,
+    "organic": false
+  },
+  {
+    "productId": "17",
+    "gtin": "7036110009940",
+    "name": "Mills Kaviar 245 g",
+    "description": "Norsk skreirogn.",
+    "price": 28.95,
+    "pricePerUnit": 34.44,
+    "unit": "500 ml",
+    "allergens": "",
+    "carbonFootprintGram": 300,
+    "organic": false
+  },
+  {
+    "productId": "18",
+    "gtin": "7044610877495",
+    "name": "Solo Super Pasjons-frukt 0.33 l",
+    "description": "Med sukker.",
+    "price": 28.95,
+    "pricePerUnit": 34.44,
+    "unit": "500 ml",
+    "allergens": "",
+    "carbonFootprintGram": 300,
+    "organic": false
   }
 ]

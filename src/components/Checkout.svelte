@@ -81,6 +81,7 @@
 					</div>
 				</button>
 				{#if !can_pay}
+				<!-- TODO: Fix this -->
 					Varene sammsvarer ikke med målt vekt. Tilkaller betjent. Vennligst vent.
 				{/if}
 			</div>
