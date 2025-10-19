@@ -28,11 +28,19 @@
 	}
 
 	function handle_checkout_click_95_conf() {
-		weighing = true;
-		let n = Number(cart.length);
-		let lower_bound = (checkout_measured_weight - 1.96 * Math.sqrt(50 / n)) * Number(cart.length);
-		let upper_bound = (checkout_measured_weight + 1.96 * Math.sqrt(50 / n)) * Number(cart.length);
-		if (total_weight < upper_bound && total_weight > lower_bound) {
+		if (!cart.length) {
+			weigh_does_not_match = true;
+			return;
+		}
+
+		const n = cart.length;
+		const sigma2 = 50; // per-item variance
+		const se_total = Math.sqrt(n * sigma2);
+
+		const lower = checkout_measured_weight - 1.96 * se_total;
+		const upper = checkout_measured_weight + 1.96 * se_total;
+
+		if (total_weight > lower && total_weight < upper) {
 			can_pay = true;
 			setTimeout(() => {
 				if (typeof window !== 'undefined') location.reload();
