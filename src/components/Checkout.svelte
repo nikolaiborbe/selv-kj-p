@@ -10,6 +10,7 @@
 	let weighing = $state(false);
 
 	let can_pay = $state(false);
+	let tried_to_pay = $state(false);
 
 	let test_weight = 10;
 	let weigh_does_not_match = $state(false);
@@ -33,12 +34,13 @@
 			can_pay = true;
 			setTimeout(() => {
 				if (typeof window !== 'undefined') location.reload();
-			}, 1000);
+			}, 1500);
 		} else {
 			weigh_does_not_match = true;
 		}
 	}
 	function try_to_pay() {
+		tried_to_pay = true;
 		handle_checkout_click();
 	}
 
@@ -71,18 +73,25 @@
 					class="border w-40 h-12 bg-zinc-700 rounded-xl pl-2"
 					bind:value={checkout_measured_weight}
 				/>
-				<button
-					class="flex w-72 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center px-4 mt-10"
-					onclick={() => try_to_pay()}
-				>
-					<div class="flex gap-2 items-center">
-						<MoneyIcon />
-						{can_pay ? 'Betalt!' : 'Betal'}
-					</div>
-				</button>
-				{#if !can_pay}
-				<!-- TODO: Fix this -->
-					Varene sammsvarer ikke med målt vekt. Tilkaller betjent. Vennligst vent.
+				{#if !tried_to_pay}
+					<button
+						class="flex w-72 h-14 rounded-full bg-blue-700 font-semibold justify-around items-center px-4 mt-10"
+						onclick={() => try_to_pay()}
+					>
+						<div class="flex gap-2 items-center">
+							<MoneyIcon />
+							Betal
+						</div>
+					</button>
+				{:else if can_pay && tried_to_pay}
+				<div class="font-semibold">
+					Betalt!
+				</div>
+				{/if}
+				{#if !can_pay && tried_to_pay}
+					<p class="font-semibold">
+						Varene sammsvarer ikke med målt vekt. Tilkaller betjent. Vennligst vent.
+					</p>
 				{/if}
 			</div>
 		{/if}
