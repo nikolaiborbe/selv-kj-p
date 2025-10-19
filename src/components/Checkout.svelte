@@ -30,8 +30,8 @@
 	function handle_checkout_click_95_conf() {
 		weighing = true;
 		let n = Number(cart.length);
-		let lower_bound = checkout_measured_weight - 1.96 * Math.sqrt(50 / n);
-		let upper_bound = checkout_measured_weight + 1.96 * Math.sqrt(50 / n);
+		let lower_bound = (checkout_measured_weight - 1.96 * Math.sqrt(50 / n)) * Number(cart.length);
+		let upper_bound = (checkout_measured_weight + 1.96 * Math.sqrt(50 / n)) * Number(cart.length);
 		if (total_weight < upper_bound && total_weight > lower_bound) {
 			can_pay = true;
 			setTimeout(() => {
