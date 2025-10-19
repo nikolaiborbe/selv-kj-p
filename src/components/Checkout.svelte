@@ -46,7 +46,7 @@
 
 	onMount(() => {
 		for (let i = 0; i < cart.length; i++) {
-			total_weight += get_item_weight(cart[i].name);
+			total_weight += get_item_weight(cart[i].name) as number;
 		}
 	});
 </script>
