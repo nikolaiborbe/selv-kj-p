@@ -38,7 +38,7 @@
 		let true_total_weight = total_weight + 20*cart.length;
 
 		const n = cart.length;
-		const sigma2 = 50; // per-item variance
+		const sigma2 = 100; // per-item variance
 		const se_total = Math.sqrt(n * sigma2);
 
 		const lower = checkout_measured_weight - 1.96 * se_total;
