@@ -28,10 +28,14 @@
 	}
 
 	function handle_checkout_click_95_conf() {
+		// assuming sigma = 50 g, this should be tested to find the actual variance
 		if (!cart.length) {
 			weigh_does_not_match = true;
 			return;
 		}
+		
+		// assuming avg. weight of container is 20 g
+		let true_total_weight = total_weight + 20*cart.length;
 
 		const n = cart.length;
 		const sigma2 = 50; // per-item variance
@@ -40,7 +44,7 @@
 		const lower = checkout_measured_weight - 1.96 * se_total;
 		const upper = checkout_measured_weight + 1.96 * se_total;
 
-		if (total_weight > lower && total_weight < upper) {
+		if (true_total_weight > lower && true_total_weight < upper) {
 			can_pay = true;
 			setTimeout(() => {
 				if (typeof window !== 'undefined') location.reload();
