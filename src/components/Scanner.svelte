@@ -74,12 +74,12 @@
 				let code = await tryDetect(videoEl);
 				if (!code) {
 					// try 90° only (less work than 180°/270°)
-					canvas.width = videoEl.videoHeight;
-					canvas.height = videoEl.videoWidth;
+					// canvas.width = videoEl.videoHeight;
+					// canvas.height = videoEl.videoWidth;
 					ctx.save();
-					ctx.translate(canvas.width / 2, canvas.height / 2);
+					// ctx.translate(canvas.width / 2, canvas.height / 2);
 					ctx.rotate(Math.PI / 2);
-					ctx.drawImage(videoEl, -videoEl.videoWidth / 2, -videoEl.videoHeight / 2);
+					ctx.drawImage(videoEl, 0, 0);
 					ctx.restore();
 					code = await tryDetect(canvas);
 				}

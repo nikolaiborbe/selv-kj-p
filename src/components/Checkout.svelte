@@ -56,7 +56,6 @@
 		{#if !weighing}
 			<div class="flex flex-col items-center gap-5 pb-4">
 				<p>Plaser handleposen på vekta.</p>
-				{total_weight}
 				<button
 					class="bg-zinc-700 w-72 rounded-full h-12 cursor-pointer text-cyan-300 font-semibold"
 					onclick={() => (weighing = true)}
