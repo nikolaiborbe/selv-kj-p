@@ -120,3 +120,6 @@
 		<Person />
 	</div>
 {/if}
+<div class="h-96 bg-black">
+
+</div>
